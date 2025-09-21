@@ -9,6 +9,13 @@ from src.image_utils import ImageProcessor
 from src.dress_synthesizer import DressSynthesizer
 from src.styles import get_custom_css, get_success_message_html, get_tips_html, get_feature_cards_html
 
+# Load environment variables
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass  # dotenv not available, will use system env vars
+
 # Configure the page
 st.set_page_config(
     page_title="Virtual Dress Try-On AI",
@@ -24,7 +31,26 @@ st.markdown(get_custom_css(), unsafe_allow_html=True)
 @st.cache_resource
 def initialize_ai():
     """Initialize the Gemini AI model"""
-    api_key = "AIzaSyDwI__vMH_xwYgk5Hc3M_Lm7goRhwPxBpo"
+    # Get API key from Streamlit secrets or environment variables
+    api_key = None
+    
+    # Try to get from Streamlit secrets first
+    try:
+        api_key = st.secrets["GEMINI_API_KEY"]
+    except:
+        # Fallback to environment variable
+        api_key = os.getenv("GEMINI_API_KEY")
+    
+    if not api_key:
+        st.error("🔑 Gemini API key not found! Please configure it in Streamlit secrets or environment variables.")
+        st.info("""
+        **To fix this:**
+        1. For Streamlit Cloud: Add GEMINI_API_KEY to your app secrets
+        2. For local development: Set GEMINI_API_KEY environment variable
+        3. Or create .streamlit/secrets.toml with your API key
+        """)
+        st.stop()
+    
     genai.configure(api_key=api_key)
     return genai.GenerativeModel('gemini-1.5-flash')
 

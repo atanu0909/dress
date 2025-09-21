@@ -44,8 +44,12 @@ venv.bak/
 ehthumbs.db
 Thumbs.db
 
-# Streamlit
+# Streamlit secrets and sensitive files
 .streamlit/secrets.toml
+.streamlit/secrets.toml.backup
+*.env
+.env.local
+.env.production
 
 # Uploads and outputs (optional - remove if you want to track them)
 uploads/*.jpg

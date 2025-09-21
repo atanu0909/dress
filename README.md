@@ -18,6 +18,25 @@ This application uses AI to create virtual dress try-ons by combining human phot
    pip install -r requirements.txt
    ```
 
+3. **🔐 Configure API Key (REQUIRED):**
+   
+   **Option A: Local Development**
+   ```bash
+   # Copy the template
+   copy ".streamlit\secrets.toml.template" ".streamlit\secrets.toml"
+   # Edit .streamlit/secrets.toml and add your Gemini API key
+   ```
+   
+   **Option B: Environment Variable**
+   ```bash
+   set GEMINI_API_KEY=your_api_key_here
+   ```
+
+4. **Get your Gemini API Key:**
+   - Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+   - Create a new API key
+   - Add it to your configuration
+
 ## Usage
 
 1. Run the Streamlit application:
@@ -32,6 +51,10 @@ This application uses AI to create virtual dress try-ons by combining human phot
 4. Click "Generate Try-On" to create your virtual try-on result
 
 5. Download your result image
+
+## 🔐 Security Note
+
+**API keys are now properly secured!** The application will not run without proper API key configuration. See [SECURITY.md](SECURITY.md) for detailed setup instructions.
 
 ## Project Structure
 
