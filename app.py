@@ -67,7 +67,7 @@ def main():
         if human_file is not None:
             human_image = Image.open(human_file)
             st.markdown('<div class="image-container">', unsafe_allow_html=True)
-            st.image(human_image, caption="Your Photo", use_column_width=True)
+            st.image(human_image, caption="Your Photo", use_container_width=True)
             st.markdown('</div>', unsafe_allow_html=True)
             
             # Image info
@@ -90,7 +90,7 @@ def main():
         if dress_file is not None:
             dress_image = Image.open(dress_file)
             st.markdown('<div class="image-container">', unsafe_allow_html=True)
-            st.image(dress_image, caption="Dress", use_column_width=True)
+            st.image(dress_image, caption="Dress", use_container_width=True)
             st.markdown('</div>', unsafe_allow_html=True)
             
             # Image info
@@ -157,7 +157,7 @@ def main():
                 tab1, tab2, tab3 = st.tabs(["🖼️ Result", "📊 Analysis", "💡 Styling Tips"])
                 
                 with tab1:
-                    st.image(result_image, caption="Virtual Try-On Result", use_column_width=True)
+                    st.image(result_image, caption="Virtual Try-On Result", use_container_width=True)
                     
                     # Save result
                     timestamp = int(time.time())
