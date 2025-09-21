@@ -10,6 +10,10 @@ headless = true
 port = 8501
 enableCORS = false
 enableXsrfProtection = false
+maxUploadSize = 10
 
 [browser]
 gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"

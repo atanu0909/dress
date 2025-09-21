@@ -1,6 +1,6 @@
 from PIL import Image, ImageOps, ImageEnhance
 import numpy as np
-import cv2
+# import cv2  # Removed to avoid conflicts with opencv-python-headless
 
 class ImageProcessor:
     """Handles image preprocessing for the virtual try-on application"""
